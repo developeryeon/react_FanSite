@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// import MemberList from './MemberList';
 
 function Form({ onSubmitHandler }) {
 	return (
@@ -15,24 +16,12 @@ function Form({ onSubmitHandler }) {
 			<FormInput>
 				<FormSelectClick>어떤 멤버에게 보낼까요?</FormSelectClick>
 				<FormSelectName name="writedTo">
-					<option name="유재석" value={'유재석'}>
-						유재석
-					</option>
-					<option name="하하" value={'하하'}>
-						하하
-					</option>
-					<option name="주우재" value={'주우재'}>
-						주우재
-					</option>
-					<option name="이이경" value={'이이경'}>
-						이이경
-					</option>
-					<option name="박진주" value={'박진주'}>
-						박진주
-					</option>
-					<option name="이미주" value={'이미주'}>
-						이미주
-					</option>
+					<option value={'유재석'}>유재석</option>
+					<option value={'하하'}>하하</option>
+					<option value={'주우재'}>주우재</option>
+					<option value={'이이경'}>이이경</option>
+					<option value={'박진주'}>박진주</option>
+					<option value={'이미주'}>이미주</option>
 				</FormSelectName>
 			</FormInput>
 			<FormSubmitBtn type="submit">등록하기</FormSubmitBtn>

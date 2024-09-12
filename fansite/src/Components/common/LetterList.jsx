@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function LetterList() {
-	const [comment, setComment] = useState([]); // 상태 변수 comment를 선언하고 초기값은 빈 배열로 설정, setComment는 상태를 업데이트하는 함수
-	const [selectedMember, setSelectedMember] = useState('유재석'); // 상태 변수 selectedMember를 선언하고 초기값은 '유재석'으로 설정, setSelectedMember는 상태를 업데이트하는 함수
+	const [comment, setComment] = useState([]);
+	const [selectedMember, setSelectedMember] = useState('유재석');
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
@@ -32,7 +32,7 @@ function LetterList() {
 	};
 
 	useEffect(() => {
-		const data = JSON.parse(localStorage.getItem('comments')) || fakeData;
+		const data = JSON.parse(localStorage.getItem('comments')) || fakeData; // 로컬 스토리지에서 'comments' 키의 값을 가져와서 파싱, 값이 없으면 빈 배열을 사용
 
 		setComment(data);
 	}, []);

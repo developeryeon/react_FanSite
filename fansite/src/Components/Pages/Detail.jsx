@@ -1,3 +1,4 @@
+// 화면이 렌더링 될 때, 어떤 작업을 하고 싶다 === useEffect
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';

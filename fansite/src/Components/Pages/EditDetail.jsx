@@ -6,13 +6,16 @@ function EditDetail() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
+	// const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
+	// const [editComment, setEditComments] = useState(storedComments);
+
 	const comment = JSON.parse(localStorage.getItem('comments'));
 
 	const findComments = comment.find((card) => card.id === id);
 
 	const onEditContentHandler = (e) => {
 		e.preventDefault();
-
+		// setEditedContent(e.target.value);
 		const contentValue = e.target.content.value;
 		findComments.content = contentValue;
 

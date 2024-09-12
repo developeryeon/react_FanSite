@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../common/Header';
 import LetterList from '../common/LetterList';
 import styled from 'styled-components';
+// import MemberList from '../common/MemberList';
 
 export default function Home() {
 	return (
