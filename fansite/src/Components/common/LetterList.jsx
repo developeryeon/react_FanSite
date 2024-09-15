@@ -31,11 +31,10 @@ function LetterList() {
 		e.target.reset();
 	};
 
-	useEffect(() => {
-		const data = JSON.parse(localStorage.getItem('comments')) || fakeData;
-
-		setComment(data);
-	}, []);
+	// useEffect(() => {
+	// 	const data = JSON.parse(localStorage.getItem('comments')) || fakeData;
+	// 	dispatch(setComment(data));
+	// }, []);
 
 	return (
 		<LetterListWrap>

@@ -25,6 +25,7 @@ export default function Detail() {
 		<DetailWrap>
 			<DetailArticle>
 				<div>
+					<HomeBtn onClick={() => navigate('/')}>홈으로</HomeBtn>
 					<DetailHeader>
 						{/* <img>아이디 이미지</img> */}
 						<HeaderH1>{findComments?.nickname}</HeaderH1>
@@ -56,11 +57,28 @@ const DetailArticle = styled.section`
 	flex-direction: column;
 	justify-content: space-between;
 	width: 700px;
+	border-radius: 10px;
 	background-color: lightgray;
 	color: #777;
 	padding: 16px;
 	overflow: hidden;
 	line-height: 1.5;
+`;
+
+const HomeBtn = styled.button`
+	position: absolute;
+	top: 37px;
+	left: 39px;
+	width: 100px;
+	height: 50px;
+	color: #fff;
+	background-color: #000;
+	box-shadow: 2px 6px 7px gray;
+	&:hover {
+		cursor: pointer;
+		background-color: purple;
+		border: 1px solid purple;
+	}
 `;
 
 const DetailHeader = styled.header`

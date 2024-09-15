@@ -1,28 +1,48 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 function EditDetail() {
 	const { id } = useParams();
 	const navigate = useNavigate();
+	const [findComments, setFindComments] = useState({});
+	const [comments, setComments] = useState([]);
 
-	const comment = JSON.parse(localStorage.getItem('comments'));
+	useEffect(() => {
+		const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
+		setComments(storedComments);
 
-	const findComments = comment.find((card) => card.id === id);
+		const foundComments = storedComments.find((card) => card.id === id) || {};
+		setFindComments(foundComments);
+	}, [id]);
 
 	const onEditContentHandler = (e) => {
 		e.preventDefault();
 
 		const contentValue = e.target.content.value;
-		findComments.content = contentValue;
+		if (!contentValue) {
+			return;
+		}
+		const confirmEdited = window.confirm('수정한 내용을 저장하시겠습니까?');
+		if (!confirmEdited) {
+			return;
+		}
 
-		localStorage.setItem('comments', JSON.stringify(comment));
+		const updatedComments = comments.map((comment) => (comment.id === id ? { ...comment, content: contentValue } : comment));
+
+		localStorage.setItem('comments', JSON.stringify(updatedComments));
 		navigate(`/detail/${id}`);
+	};
+
+	const homeBtnClickHandler = () => {
+		navigate('/');
+		window.location.reload();
 	};
 
 	return (
 		<EditWrap>
 			<EditArticle>
+				<HomeBtn onClick={homeBtnClickHandler}>홈으로</HomeBtn>
 				<EditHeader>
 					{/* <img>아이디 이미지</img> */}
 					<EditH1>{findComments?.nickname}</EditH1>
@@ -60,12 +80,29 @@ const EditArticle = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	width: 700px;
+	border-radius: 10px;
 	background-color: lightgray;
 	color: #777;
 	height: 513px;
 	overflow: hidden;
 	padding: 16px;
 	line-height: 1.5;
+`;
+
+const HomeBtn = styled.button`
+	position: absolute;
+	top: 37px;
+	left: 39px;
+	width: 100px;
+	height: 50px;
+	color: #fff;
+	background-color: #000;
+	box-shadow: 2px 6px 7px gray;
+	&:hover {
+		cursor: pointer;
+		background-color: purple;
+		border: 1px solid purple;
+	}
 `;
 
 const EditHeader = styled.header`
